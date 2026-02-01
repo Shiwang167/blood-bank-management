@@ -1,0 +1,133 @@
+.dashboard-page {
+    min-height: 100vh;
+    background: var(--light-bg);
+}
+
+.dashboard-container {
+    padding: 2rem 0;
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-welcome {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.widget {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.widget:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.widget-icon {
+    font-size: 1.5rem;
+}
+
+.widget-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.widget-content {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.widget-stat {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin: 1rem 0;
+}
+
+.widget-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.widget-action {
+    margin-top: 1rem;
+}
+
+.content-section {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-light);
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+@media (max-width: 768px) {
+    .widgets-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

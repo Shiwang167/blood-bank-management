@@ -1,0 +1,31 @@
+[Unit]
+Description=BloodBridge Flask Application
+After=network.target postgresql.service
+
+[Service]
+Type=notify
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/bloodbank/backend
+Environment="PATH=/home/ubuntu/bloodbank/backend/venv/bin"
+Environment="FLASK_ENV=production"
+EnvironmentFile=/home/ubuntu/bloodbank/backend/.env
+ExecStart=/home/ubuntu/bloodbank/backend/venv/bin/gunicorn \
+    --config /home/ubuntu/bloodbank/backend/deploy/gunicorn_config.py \
+    app:app
+
+# Restart policy
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=bloodbank
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

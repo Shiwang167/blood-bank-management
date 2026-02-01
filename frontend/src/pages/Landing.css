@@ -1,0 +1,340 @@
+.landing {
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--dark-gradient-start) 0%, var(--dark-gradient-end) 100%);
+    color: white;
+    overflow: hidden;
+}
+
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(220, 53, 69, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba(220, 53, 69, 0.5);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: 6rem 0;
+    background: var(--dark-bg);
+    color: white;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+}
+
+.steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.step-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-card p {
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.step-arrow {
+    font-size: 2rem;
+    color: var(--primary-red);
+    font-weight: 700;
+}
+
+/* Impact Stats */
+.impact-stats {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%);
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(220, 53, 69, 0.1);
+    border: 2px solid rgba(220, 53, 69, 0.3);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-red);
+    box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Auth Modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-tab.active {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.auth-tab:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-red);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-label:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.radio-label input[type="radio"] {
+    width: auto;
+    accent-color: var(--primary-red);
+}
+
+.radio-label input[type="radio"]:checked+span {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+.error-message {
+    padding: 0.75rem;
+    background: rgba(220, 53, 69, 0.2);
+    border: 2px solid var(--primary-red);
+    border-radius: var(--radius-sm);
+    color: white;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .steps {
+        flex-direction: column;
+    }
+
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
