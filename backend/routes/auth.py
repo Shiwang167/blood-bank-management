@@ -56,14 +56,18 @@ def register():
         user_data['hospital_name'] = data.get('hospital_name', '')
         user_data['location'] = data.get('location', '')
     
-    success = db_service.create_user(user_data)
+    result = db_service.create_user(user_data)
     
-    if not success:
+    # InMemoryDBService returns True/False, RDSService returns user_id/None
+    if not result:
         return jsonify({'error': 'Failed to create user'}), 500
+    
+    # If RDS returned a user_id string, use it; otherwise use the one we generated
+    final_user_id = result if isinstance(result, str) else user_id
     
     return jsonify({
         'message': 'User registered successfully',
-        'user_id': user_id
+        'user_id': final_user_id
     }), 201
 
 

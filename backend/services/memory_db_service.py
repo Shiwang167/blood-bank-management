@@ -154,3 +154,7 @@ class InMemoryDBService:
             if item.get('units_available', 0) < threshold:
                 results.append(item)
         return results
+    
+    def health_check(self):
+        """Check database health — always healthy for in-memory"""
+        return True

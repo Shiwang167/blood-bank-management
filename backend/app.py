@@ -1,9 +1,16 @@
 from flask import Flask
 from flask_cors import CORS
+from dotenv import load_dotenv
 from config import config
-from services import RDSService, AuthService
+from services import AuthService, InMemoryDBService
 from routes import auth_bp, requests_bp, inventory_bp, donor_bp
 import os
+import logging
+
+# Load .env file before anything else
+load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 def create_app(config_name='default'):
     """Application factory"""
@@ -22,8 +29,23 @@ def create_app(config_name='default'):
         }
     })
     
-    # Initialize services (using PostgreSQL RDS)
-    app.db_service = RDSService(config_obj)
+    # Initialize services
+    # Use RDSService (PostgreSQL) if DATABASE_URL is explicitly set,
+    # otherwise fall back to InMemoryDBService for local development
+    database_url = os.getenv('DATABASE_URL')
+    if database_url:
+        try:
+            from services import RDSService
+            app.db_service = RDSService(config_obj)
+            logger.info("Using PostgreSQL (RDS) database service")
+        except Exception as e:
+            logger.warning(f"Failed to connect to PostgreSQL: {e}")
+            logger.info("Falling back to in-memory database service")
+            app.db_service = InMemoryDBService(config_obj)
+    else:
+        logger.info("No DATABASE_URL set — using in-memory database service (local dev mode)")
+        app.db_service = InMemoryDBService(config_obj)
+    
     app.auth_service = AuthService(config_obj)
     
     # Register blueprints
